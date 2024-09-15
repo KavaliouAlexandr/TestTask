@@ -62,20 +62,20 @@
     </div>
 
     <!-- Slider -->
-    <div class="mt-8 overflow-hidden relative">
+    <div class="mt-8 ml-36 overflow-hidden relative">
         <!-- Slider container -->
         <div id="slider" class="flex transition-transform duration-500" style="width: calc(300% + 40px);">
           <!-- Slide 1 -->
           <div class="w-[calc(50%-10px)] pr-2">
-            <img src="https://via.placeholder.com/600x446/ff0000" alt="Car 1" class="w-full object-cover border">
+            <img src="./assets/car1.png" alt="Car 1" class="w-full object-cover border">
           </div>
           <!-- Slide 2 -->
           <div class="w-[calc(50%-10px)] pl-2 pr-2">
-            <img src="https://via.placeholder.com/600x446/00ff00" alt="Car 2" class="w-full object-cover border">
+            <img src="./assets/car2.png" alt="Car 2" class="w-full object-cover border">
           </div>
           <!-- Slide 3 -->
           <div class="w-[calc(50%-10px)] pl-2">
-            <img src="https://via.placeholder.com/600x446/0000ff" alt="Car 3" class="w-full object-cover border">
+            <img src="./assets/car3.png" alt="Car 3" class="w-full object-cover border">
           </div>
         </div>
       
@@ -83,6 +83,7 @@
       <div class="flex justify-center mt-16 mb-36">
         <button onclick="goToSlide(0)" class="w-3 h-3 bg-blue-600 rounded-full mx-2" id="indicator-0"></button>
         <button onclick="goToSlide(1)" class="w-3 h-3 bg-gray-400 rounded-full mx-2" id="indicator-1"></button>
+        <button onclick="goToSlide(2)" class="w-3 h-3 bg-gray-400 rounded-full mx-2" id="indicator-1"></button>
       </div>
     </div>
   </div>
@@ -123,15 +124,33 @@
   <script>
     const slider = document.getElementById('slider');
     const indicators = document.querySelectorAll('[id^="indicator-"]');
+    const totalSlides = slider.children.length;
     let currentSlide = 0;
-
+    let isTransitioning = false;
+  
     function goToSlide(slideIndex) {
-      const slideWidth = slider.children[0].offsetWidth;
+      if (isTransitioning) return; // Prevent multiple transitions at the same time
+      isTransitioning = true;
+  
+      const slideWidth = slider.children[0].offsetWidth + 20; // Including the padding
+      slider.style.transition = 'transform 0.5s ease'; // Smooth transition
       slider.style.transform = `translateX(-${slideWidth * slideIndex}px)`;
+  
       currentSlide = slideIndex;
       updateIndicators();
+  
+      setTimeout(() => {
+        if (currentSlide >= totalSlides) {
+          // Jump back to the first slide without animation
+          slider.style.transition = 'none'; // Disable transition
+          slider.style.transform = 'translateX(0)'; // Go back to the first slide
+          currentSlide = 0;
+          updateIndicators(); // Update indicators
+        }
+        isTransitioning = false; // Allow new transitions
+      }, 500); // Match the transition duration
     }
-
+  
     function updateIndicators() {
       indicators.forEach((indicator, index) => {
         if (index === currentSlide) {
@@ -143,13 +162,13 @@
         }
       });
     }
-
+  
+    // Auto slide every 5 seconds
     setInterval(() => {
-      currentSlide = (currentSlide + 1) % slider.children.length;
-      goToSlide(currentSlide);
+      goToSlide((currentSlide + 1) % totalSlides);
     }, 5000);
   </script>
-
+  
 </body>
 </html>
 

@@ -8,13 +8,13 @@
   <title>CarsSpot</title>
 </head>
 <body class="scroll-smooth bg-gray-50 text-gray-800 relative">
-    <!-- Фоновые полоски (размеры и стили подгоняются под навигацию) -->
+    <!-- Ryski -->
     <div class="absolute mr-24 top-0 right-0 z-0">
         <img src="./assets/Element.png" style="width: 659px; height: 668px; opacity: 0.8;" alt="Stripes">
     </div>
     
   
-    <!-- Основной контейнер для контента (с header) -->
+    <!-- Header -->
     <div class="relative z-10 ">
   
         <!-- Header -->
@@ -32,7 +32,7 @@
   
         <!-- Main Section -->
         <section class="py-16 mt-16 relative flex items">
-            <!-- Левый блок с текстом -->
+            <!-- Lewy blok z tekstem -->
             <div class="container px-36 md:w-3/4 z-10">
                 <h1 class="leading-tight font-bebas tracking-tighter text-6xl color: #282828; font-bold uppercase mb-4">Sprzedajemy Samochody <br />z Europy</h1>
                 <p class="text-lg my-16">Kup komfortowy pojazd, aby każda podróż <br /> była wyjątkowym przeżyciem.</p>
@@ -42,7 +42,7 @@
                 </div>
             </div>
   
-            <!-- Правый блок с машинами -->
+            <!-- blok z autami po prawej -->
         </section>
         <div class="absolute top-0 right-0 h-full z-50 pointer-events-none flex justify-end items-center transform -translate-y-64">
             <img src="./assets/cars.png" alt="Cars" class="w-[1064px] h-auto">
@@ -81,6 +81,7 @@
           <div class="w-[calc(50%-10px)] pl-2 pr-12">
             <img src="./assets/car3.png" alt="Car 1" class="w-full object-cover border">
           </div>
+          <!-- slide clone -->
           <div class="w-[calc(50%-10px)] pl-2">
             <img src="./assets/car1.png" alt="Car 1" class="w-full object-cover border">
           </div>
@@ -99,7 +100,7 @@
     </div>
   </div>
 
-  <div style="background-color: #282828;" class="text-white pt-24 py-16  px-36"> <!-- 32px отступы -->
+  <div style="background-color: #282828;" class="text-white pt-24 py-16  px-36"> <!-- marginesy -->
     <div class="grid grid-cols-2 gap-8">
 
         <div>
@@ -121,7 +122,7 @@
 
 
   <!-- Footer -->
-  <footer style="background-color: #282828;" class="border-t border-white text-gray-300 py-8 pb-8 px-36"> <!-- Отступы -->
+  <footer style="background-color: #282828;" class="border-t border-white text-gray-300 py-8 pb-8 px-36"> <!-- marginesy -->
     <div class="flex justify-between items-center">
       <div class="space-x-4">
         <a href="#" class="hover:text-white font-bold">Cars Spot</a>
@@ -136,36 +137,36 @@
     const slider = document.getElementById('slider');
     const indicators = document.querySelectorAll('[id^="indicator-"]');
     const totalSlides = slider.children.length;
-    let currentSlide = 1; // Start on the real first slide (1, because 0 is the cloned last slide)
+    let currentSlide = 1; // początek z 1 slidu
     let isTransitioning = false;
   
-    // Set initial position to the real first slide
+    // początkowa pozycja
     slider.style.transform = `translateX(-${slider.children[0].offsetWidth + 20}px)`;
   
     function goToSlide(slideIndex) {
-      if (isTransitioning) return; // Prevent multiple transitions at the same time
+      if (isTransitioning) return; // sprzwdza zmiane tylko 1 slajdu
       isTransitioning = true;
   
-      const slideWidth = slider.children[0].offsetWidth + 20; // Including the padding
-      slider.style.transition = 'transform 0.5s ease'; // Smooth transition
-      slider.style.transform = `translateX(-${slideWidth * (slideIndex + 1)}px)`; // Adjust for the cloned slide
+      const slideWidth = slider.children[0].offsetWidth + 20; //padding
+      slider.style.transition = 'transform 0.5s ease';
+      slider.style.transform = `translateX(-${slideWidth * (slideIndex + 1)}px)`;
   
       currentSlide = slideIndex;
       updateIndicators();
   
       setTimeout(() => {
-        if (currentSlide === totalSlides - 2) { // If on the cloned first slide
-          slider.style.transition = 'none'; // Disable transition
-          slider.style.transform = `translateX(-${slideWidth}px)`; // Move to the real first slide
-          currentSlide = 0; // Update the current slide to the real first
+        if (currentSlide === totalSlides - 2) { //sprawdza sklonowany slajd
+          slider.style.transition = 'none';
+          slider.style.transform = `translateX(-${slideWidth}px)`; // zwraca do 1 slajdu
+          currentSlide = 0;
         }
-        if (currentSlide === -1) { // If on the cloned last slide
-          slider.style.transition = 'none'; // Disable transition
-          slider.style.transform = `translateX(-${slideWidth * (totalSlides - 2)}px)`; // Move to the real last slide
-          currentSlide = totalSlides - 3; // Update the current slide to the real last
+        if (currentSlide === -1) {
+          slider.style.transition = 'none';
+          slider.style.transform = `translateX(-${slideWidth * (totalSlides - 2)}px)`;
+          currentSlide = totalSlides - 3;
         }
-        isTransitioning = false; // Allow new transitions
-      }, 500); // Match the transition duration
+        isTransitioning = false;
+      }, 500);
     }
   
     function updateIndicators() {
@@ -179,10 +180,9 @@
         }
       });
     }
-  
-    // Auto slide every 5 seconds
+    
     setInterval(() => {
-      goToSlide((currentSlide + 1) % (totalSlides - 2)); // Exclude cloned slides
+      goToSlide((currentSlide + 1) % (totalSlides - 2)); // chowa klon
     }, 5000);
   </script>
   

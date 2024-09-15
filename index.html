@@ -8,16 +8,16 @@
 </head>
 <body class="bg-gray-50 text-gray-800 relative">
     <!-- Фоновые полоски (размеры и стили подгоняются под навигацию) -->
-    <div class="absolute top-0 right-0 z-0">
+    <div class="absolute mr-24 top-0 right-0 z-0">
         <img src="./assets/Element.png" style="width: 659px; height: 668px; opacity: 0.8;" alt="Stripes">
     </div>
     
   
     <!-- Основной контейнер для контента (с header) -->
-    <div class="relative z-10 px-24">
+    <div class="relative z-10 ">
   
         <!-- Header -->
-        <header class="bg-transparent py-4  flex justify-between items-center">
+        <header class="bg-transparent py-4 px-36 flex justify-between items-center">
             <img src="./assets/logo.png" alt="CarsSpot Logo" class="h-8">
 
             <nav class="space-x-4">
@@ -32,9 +32,9 @@
         <!-- Main Section -->
         <section class="py-16 relative flex items">
             <!-- Левый блок с текстом -->
-            <div class="container md:w-1/2 z-10">
+            <div class="container px-24 md:w-1/2 z-10">
                 <h1 class="text-6xl color: #282828; font-bold mb-4">Sprzedajemy Samochody <br />z Europy</h1>
-                <p class="text-lg my-16">Kup komfortowy pojazd, aby każda podróż była wyjątkowym przeżyciem.</p>
+                <p class="text-lg my-16">Kup komfortowy pojazd, aby każda podróż <br /> była wyjątkowym przeżyciem.</p>
                 <div class="space-x-4 mb-96">
                     <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-md">Zobacz oferte</a>
                     <a href="#" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-md">Zobacz nas</a>
@@ -43,10 +43,12 @@
             </div>
   
             <!-- Правый блок с машинами -->
-            <div class="absolute right-0 top-0 mt-56 md:w-1/2 w-full h-full z-10 flex justify-end items-center">
-                <img src="./assets/cars.png" alt="Cars" class="absolute right-0 w-[700px]">
-            </div>
         </section>
+        <div class="absolute top-0 right-0 h-full z-50 pointer-events-none flex justify-end items-center transform -translate-y-64">
+            <img src="./assets/cars.png" alt="Cars" class="w-[1064px] h-auto">
+        </div>
+        
+        
 
     <div class="bg-white">
       <div>
@@ -79,7 +81,7 @@
     </div>
   </div>
 
-  <div style="background-color: #282828;" class="text-white   px-16"> <!-- 32px отступы -->
+  <div style="background-color: #282828;" class="text-white   px-24"> <!-- 32px отступы -->
     <div class="grid grid-cols-2 gap-8">
 
         <div>

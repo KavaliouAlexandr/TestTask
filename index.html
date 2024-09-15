@@ -6,36 +6,47 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <title>CarsSpot</title>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-800 relative">
+    <!-- Фоновые полоски (размеры и стили подгоняются под навигацию) -->
+    <div class="absolute top-0 right-0 z-0">
+        <img src="./assets/Element.png" style="width: 659px; height: 668px; opacity: 0.8;" alt="Stripes">
+    </div>
+    
+  
+    <!-- Основной контейнер для контента (с header) -->
+    <div class="relative z-10">
+  
+        <!-- Header -->
+        <header class="bg-transparent py-4 px-8 flex justify-between items-center">
+            <img src="./assets/logo.png" alt="CarsSpot Logo" class="h-8">
 
-  <div class="px-8 lg:px-20">
-
-    <!-- Header -->
-    <header class="bg-white shadow-sm">
-      <div class="w-full flex justify-between items-center py-4">
-        <div class="text-2xl font-bold text-blue-600">CarsSpot</div>
-        <nav class="space-x-4">
-          <a href="#" class="text-gray-600 hover:text-gray-800">Galeria Zdjęć</a>
-          <a href="#" class="text-gray-600 hover:text-gray-800">FAQ</a>
-        </nav>
-        <div class="space-x-4">
-          <a href="#" class="text-gray-600 hover:text-gray-800">Zaloguj się</a>
-          <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md">Rejestruj się</a>
-        </div>
-      </div>
-    </header>
-
-    <section class="bg-white py-16 text-center">
-      <h1 class="text-4xl font-bold mb-4">Sprzedajemy Samochody z Europy</h1>
-      <p class="text-gray-600 mb-8">Kup sprawdzony pojazd, który będzie idealny dla Twojej rodziny, firmy lub na co dzień.</p>
-      <div class="space-x-4">
-        <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-md">Zobacz oferte</a>
-        <a href="#" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-md">Zobacz nas</a>
-      </div>
-      <div class="mt-8 flex justify-center">
-        <img src="https://via.placeholder.com/600x400" alt="Cars" class="w-3/4 md:w-2/4">
-      </div>
-    </section>
+            <nav class="space-x-4">
+                <a href="#" class="text-gray-600 hover:text-gray-800">Galeria Zdjęć</a>
+                <a href="#" class="text-gray-600 hover:text-gray-800">FAQ</a>
+            </nav>
+            <div class="space-x-4">
+                <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-md" style="width: 300px; height: 47px;">Zadzwoń do nas</a>
+            </div>
+        </header>
+  
+        <!-- Main Section -->
+        <section class="py-16 relative flex items">
+            <!-- Левый блок с текстом -->
+            <div class="container md:w-1/2 z-10">
+                <h1 class="text-7xl color: #282828; font-bold mb-4">Sprzedajemy Samochody z Europy</h1>
+                <p class="text-lg my-16">Kup komfortowy pojazd, aby każda podróż była wyjątkowym przeżyciem.</p>
+                <div class="space-x-4 mb-96">
+                    <a href="#" class="bg-blue-600 text-white px-6 py-3 rounded-md">Zobacz oferte</a>
+                    <a href="#" class="bg-gray-200 text-gray-800 px-6 py-3 rounded-md">Zobacz nas</a>
+                </div>
+                
+            </div>
+  
+            <!-- Правый блок с машинами -->
+            <div class="absolute right-0 top-0 mt-56 md:w-1/2 w-full h-full z-10 flex justify-end items-center">
+                <img src="./assets/cars.png" alt="Cars" class="absolute right-0 w-[700px]">
+            </div>
+        </section>
 
     <div class="bg-white">
       <div>
